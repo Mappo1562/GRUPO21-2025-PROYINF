@@ -1,4 +1,4 @@
-## Grupo 8
+# Grupo 8
 ### Repositorio del grupo 8
 Integrantes del grupo:
 - Alejandro Vergara - Rol: 202273568-6
