@@ -5,7 +5,8 @@ Integrantes del grupo:
 - Martin Ibañez - Rol: 202273597-K
 - Benjamin Barria - Rol: 202273644-5 
 - David Kripper - Rol: 202273521-K
-- **Tutor**: Ricardo Salas
+- **Profesor**: Ricardo Salas
+- **Ayudante**: Matias Barrera
 
 ## Wiki 
 
