@@ -1,6 +1,5 @@
 # Grupo 8
-### Repositorio del grupo 8
-Integrantes del grupo:
+Este es el repositorio del grupo 8, cuyos integrantes son:
 - Alejandro Vergara - Rol: 202273568-6
 - Martin Ibañez - Rol: 202273597-K
 - Benjamin Barria - Rol: 202273644-5 
