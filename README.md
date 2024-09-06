@@ -8,4 +8,4 @@ Este es el repositorio del grupo 8, cuyos integrantes son:
 - **Ayudante**: Matias Barrera
 
 ## Wiki 
-acceder a la [Wiki]([http://example.com/ "Title"](https://github.com/Koffy04/GRUPO1-2024-PROYINF/wiki))
+acceder a la [Wiki]([https://github.com/Mappo1562/GRUPO8-2024-PROYINF/wiki])
