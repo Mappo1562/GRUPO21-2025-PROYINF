@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <style>
+            *{
+                text-decoration: none;
+            }
+            .p1{
+                font-family: 'Roboto', sans-serif;
+            }
+            #barra{
+                margin:7px;
+                padding:14px;
+                list-style:none;
+                text-transform:uppercase;
+                background: #6eb365;
+                border-radius: 10px;
+                box-shadow:0 0 5px 0 #f2f2f2;
+                color: black;
+            }
+            #barra li{
+                display: inline-block;
+            }
+            .salchipapa{
+                background: #87e98c;
+                display: inline-block;
+                margin:0 30px;
+                border:2px solid rgba(3, 0, 187, 0.1);
+                padding: 10px 20px;
+                border-radius: 10px;
+            }
+            .salchipapa:hover{
+                border: solid white;
+            }
+            #contenedor{
+                float: right;
+                margin-right: 20px;
+            }
+            a:hover{
+
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <ul id="barra" class="p1">
+            <!--si inicio sesion; -->
+            <li><a href="" class="salchipapa">Men&uacute;</a></li>
+            <li><a href="" class="salchipapa">Solicitar boletin</a></li>
+            <li><a href="" class="salchipapa" id="tempor">revisar boletines</a></li>
+            <li><a href="" class="salchipapa">subir boletines</a></li>
+            <li id="logout"><a href="" class="salchipapa">Cerrar sesi&oacute;n</a></li>
+            <li id="contenedor"><p id="usuario" class="p1">Usuario: <b>{{ user.username }}</b></p></li>
+            <!--si no; -->
+            <li id="login">
+                <a href="" class="salchipapa">Iniciar sesi&oacute;n</a>
+            </li>
+            <li id="register">
+                <a href="" class="salchipapa">Crear cuenta</a>
+            </li>
+            <!--endif -->
+        </ul>
+    </body>
+</html>
