@@ -9,5 +9,3 @@ Este es el repositorio del grupo 8, cuyos integrantes son:
 
 ## Wiki 
 Acceder a la [Wiki](https://github.com/Mappo1562/GRUPO8-2024-PROYINF/wiki "WIKI")
-
-- pip install django-crispy-forms
