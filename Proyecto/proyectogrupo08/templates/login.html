@@ -30,6 +30,7 @@
                 border:2px solid rgba(3, 0, 187, 0.1);
                 padding: 10px 20px;
                 border-radius: 10px;
+                font-family: 'Roboto', sans-serif;
             }
             .salchipapa:hover{
                 border: solid white;
@@ -39,28 +40,34 @@
                 margin-right: 20px;
             }
             a:hover{
-
+                color: blue;
+            }
+            /* Estilos para los botones */
+            button.salchipapa {
+                background-color: #87e98c;
+                border: 2px solid rgba(3, 0, 187, 0.1);
+                padding: 10px 20px;
+                border-radius: 10px;
+                font-family: 'Roboto', sans-serif;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+            button.salchipapa:hover {
+                border-color: white;
                 color: blue;
             }
         </style>
     </head>
     <body>
-        <ul id="barra" class="p1">
-            <!--si inicio sesion; -->
-            <li><a href="" class="salchipapa">Men&uacute;</a></li>
-            <li><a href="" class="salchipapa">Solicitar boletin</a></li>
-            <li><a href="" class="salchipapa" id="tempor">revisar boletines</a></li>
-            <li><a href="" class="salchipapa">subir boletines</a></li>
-            <li id="logout"><a href="" class="salchipapa">Cerrar sesi&oacute;n</a></li>
-            <li id="contenedor"><p id="usuario" class="p1">Usuario: <b>{{ user.username }}</b></p></li>
-            <!--si no; -->
-            <li id="login">
-                <a href="" class="salchipapa">Iniciar sesi&oacute;n</a>
-            </li>
-            <li id="register">
-                <a href="" class="salchipapa">Crear cuenta</a>
-            </li>
-            <!--endif -->
-        </ul>
+        <h1 class="p1">Iniciar sesión</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="button-container">
+                <button type="submit" class="salchipapa">Iniciar sesión</button>
+                <a href="{% url 'index' %}" class="salchipapa">Volver al inicio</a>
+            </div>
+        </form>
     </body>
 </html>
+
