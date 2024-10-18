@@ -7,7 +7,7 @@ Este es el repositorio del grupo 8, cuyos integrantes son:
 - **Profesor**: Ricardo Salas
 - **Ayudante**: Matias Barrera
 
-## Link video
+## Link video H3
 [Video](https://youtu.be/A5DkwLJX0dw)
 
 ## Wiki 
