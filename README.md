@@ -14,7 +14,12 @@ Este es el repositorio del grupo 8, cuyos integrantes son:
 Acceder a la [Wiki](https://github.com/Mappo1562/GRUPO8-2024-PROYINF/wiki "WIKI")
 
 ---
-
+## Requerimientos
+El programa esta siendo probado y ejecutado en el simbolo del sistema correspondiente a Windows 10 pro
+- El programa esta escrito con python 3.11.1
+- se utilizo django 5.1.1
+---
+## Uso
 Para correr el programa hay que utilizar el comando
 ```
 py manage.py runserver
