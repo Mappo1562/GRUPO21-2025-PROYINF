@@ -20,7 +20,7 @@ El programa esta siendo probado y ejecutado en el simbolo del sistema correspond
 - se utilizo django 5.1.1
 ---
 ## Uso
-Para correr el programa hay que utilizar el comando
+Para correr el programa hay que utilizar el comando en la carpeta proyecto
 ```
 py manage.py runserver
 ```
