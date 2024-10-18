@@ -20,7 +20,21 @@ El programa esta siendo probado y ejecutado en el simbolo del sistema correspond
 - se utilizo django 5.1.1
 ---
 ## Uso
-Para correr el programa hay que utilizar el comando en la carpeta proyecto
+Para correr el programa es necesario tener instalado la libreria django con los comandos
+```
+pip install django
+```
+Luego es necesario crear un entorno virtual para que no tenga problemas en la ejecucion con los comandos
+```
+pip install virtualenv
+
+myenv\Scripts\activate
+```
+Luego es necesario posicionarse en la carpeta donde se encuentra el programa con el comando
+```
+cd ruta/del/proyecto
+```
+Finalmente hay que correr el programa utilizando el comando
 ```
 py manage.py runserver
 ```
