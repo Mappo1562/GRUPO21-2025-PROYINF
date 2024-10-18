@@ -12,3 +12,11 @@ Este es el repositorio del grupo 8, cuyos integrantes son:
 
 ## Wiki 
 Acceder a la [Wiki](https://github.com/Mappo1562/GRUPO8-2024-PROYINF/wiki "WIKI")
+
+---
+
+Para correr el programa hay que utilizar el comando
+```
+py manage.py runserver
+```
+y buscar en el navegador el siguiente [enlace](http://127.0.0.1:8000/)
