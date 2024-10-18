@@ -7,5 +7,8 @@ Este es el repositorio del grupo 8, cuyos integrantes son:
 - **Profesor**: Ricardo Salas
 - **Ayudante**: Matias Barrera
 
+## Link video
+[Video](https://youtu.be/A5DkwLJX0dw)
+
 ## Wiki 
 Acceder a la [Wiki](https://github.com/Mappo1562/GRUPO8-2024-PROYINF/wiki "WIKI")
