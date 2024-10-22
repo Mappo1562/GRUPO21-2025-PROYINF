@@ -8,7 +8,7 @@ Este es el repositorio del grupo 8, cuyos integrantes son:
 - **Ayudante**: Matias Barrera
 
 ## Link video H3
-[Video](https://youtu.be/A5DkwLJX0dw)
+[Video](https://youtu.be/A5DkwLJX0dw)  
 [Canva utilizado](https://www.canva.com/design/DAGTsEs5RuA/2Uh8WHbqkMN-PdsR7aTAhw/edit)
 
 ## Wiki 
