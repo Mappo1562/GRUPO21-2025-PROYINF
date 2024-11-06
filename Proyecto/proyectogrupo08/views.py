@@ -6,8 +6,6 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 
-def hola(request):
-    return HttpResponse("HOLA MUNDO!")
 
 def index(request):
     return render(request,'index.html')
