@@ -62,21 +62,9 @@
         <h1 class="p1">Formulario de Registro</h1>
         <form method="post">
             {% csrf_token %}
-        
-            <label for="username" class="p1">Nombre de usuario:</label>
-            <input type="text" id="username" name="username" required><br><br>
-        
-            <label for="password" class="p1">Contraseña:</label>
-            <input type="password" id="password" name="password" required><br><br>
-        
-            <label for="confirm_password" class="p1">Confirmar contraseña:</label>
-            <input type="password" id="confirm_password" name="confirm_password" required><br><br>
-        
-            <!-- Aquí puedes incluir cualquier otro campo de form -->
-            <div class="button-container">
-                <button type="submit" class="salchipapa">Registrarse</button>
-                <a href="{% url 'index' %}" class="salchipapa">Volver al inicio</a>
-            </div>
+            {{ form.as_p }}
+            <button type="submit" class="salchipapa">Registrarse</button>
+            <a href="{% url 'index' %}" class="salchipapa">Volver al inicio</a>
         </form>
     </body>
 </html>

@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from proyectogrupo08 import views 
-from django.contrib.auth.views import LoginView,LogoutView
 
+from django.contrib.auth.views import LoginView,LogoutView
+from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),

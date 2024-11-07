@@ -9,7 +9,7 @@ from django.contrib import messages
 
 def index(request):
     return render(request,'index.html')
-
+"""
 def registro_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -29,20 +29,4 @@ def registro_view(request):
         return redirect('index')  # Redirigir a la página de inicio
 
     return render(request, 'Register.html')
-
-def logout_view(request):
-    logout(request)
-    messages.success(request, 'Has cerrado sesión correctamente.')
-    return redirect('index')
-
-def login(request):
-    if request.method == "POST":
-        form = NewRegister(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login')
-        else:
-            form = NewRegister()
-
-    
-    return render(request,'registration/register.html',{'form':NewRegister})
+"""
