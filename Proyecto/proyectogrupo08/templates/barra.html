@@ -57,33 +57,27 @@
         <!-- Bootstrap Navbar -->
         <nav class="navbar navbar-expand-lg" style="background-color: var(--menu-bg);">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Menu</a>
+                <a class="navbar-brand" href="{% url 'index' %}">Menu</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active " aria-current="page" href="{% url 'Register' %}">Crear cuenta</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="#">Subir boletines</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Revisar boletines
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
+                        {% if user.is_authenticated %}
+                            {% if user.profile.get_role_display == "Administrador" %}
+                                <li class="nav-item">
+                                    <a class="nav-link active " aria-current="page" href="{% url 'Register' %}">Crear cuenta</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{% url 'delete_user' %}">Borrar cuenta</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link active " aria-current="page" href="#">Subir boletin</a>                            
+                                </li>
+                            {% endif %}
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                        {% if user.is_authenticated %}
                             <p id="usuario" class="p1 me-3">Usuario: <b>{{ user.username }}</b></p>
                             <p id="usuario" class="p1 me-3">Rol: <b>{{ profile.get_role_display }}</b></p>
                             <a href="{% url 'logout' %}" class="btn btn-outline">Cerrar sesión</a>

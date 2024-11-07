@@ -15,16 +15,19 @@ def index(request):
         profile = Profile.objects.get(user=request.user)
         return render(request, 'index.html', {'profile': profile})
 
-def registro_view(request):
 
+def registro_view(request):
     if request.method == 'POST':
         form = NewRegister(request.POST)
         if form.is_valid():
             user = form.save()
-            auth_login(request, user)  # Autentica al usuario automáticamente
+            # Verifica si ya hay un usuario autenticado
+            if not request.user.is_authenticated:
+                auth_login(request, user)  # Solo autentica al nuevo usuario si no hay uno autenticado
             return redirect('index')  # Redirigir a la página de inicio
     else:
         form = NewRegister()
+    
     return render(request, 'Register.html', {'form': form})
 
 
@@ -32,6 +35,7 @@ def logout_view(request):
     logout(request)
     messages.success(request, 'Has cerrado sesión correctamente.')
     return redirect('index')
+
 
 def login(request):
     if request.method == "POST":
@@ -41,6 +45,17 @@ def login(request):
             return redirect('login')
         else:
             form = NewRegister()
-
-    
     return render(request,'registration/register.html',{'form':NewRegister})
+
+
+def delete_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        try:
+            user = User.objects.get(username=username)
+            user.delete()
+            return redirect('index')  # Redirigir después de eliminar
+        except User.DoesNotExist:
+            return render(request, 'delete_user.html', {'error': 'Usuario no encontrado.'})
+
+    return render(request, 'delete_user.html')

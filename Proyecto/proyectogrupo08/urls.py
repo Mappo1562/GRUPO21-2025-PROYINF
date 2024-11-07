@@ -26,5 +26,5 @@ urlpatterns = [
     path('Register/',views.registro_view, name="Register"),
     path('logout/', views.logout_view, name='logout'),
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
-
+    path('delete_user/', views.delete_user, name='delete_user'),
 ]
