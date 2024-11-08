@@ -25,12 +25,6 @@ Para correr el programa es necesario tener instalado la libreria django con los 
 ```
 pip install django
 ```
-Luego es necesario crear un entorno virtual para que no tenga problemas en la ejecucion con los comandos
-```
-pip install virtualenv
-
-myenv\Scripts\activate
-```
 Luego es necesario posicionarse en la carpeta donde se encuentra el programa con el comando
 ```
 cd ruta/del/proyecto
@@ -39,4 +33,4 @@ Finalmente hay que correr el programa utilizando el comando
 ```
 py manage.py runserver
 ```
-y buscar en el navegador el siguiente [enlace](http://127.0.0.1:8000/)
+y buscar en el navegador el siguiente [enlace]([http://127.0.0.1:8000/index])
