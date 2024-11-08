@@ -33,4 +33,16 @@ Finalmente hay que correr el programa utilizando el comando
 ```
 py manage.py runserver
 ```
+cuentas:  
+
+
+| Nombre | Contraseña | 
+|----------|----------|
+| admin   | 1234   | 
+| operador    | 1234   |
+| bibliotecologa | 1234   | 
+
+
+
+
 y buscar en el navegador el siguiente [enlace](http://127.0.0.1:8000/index)
