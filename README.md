@@ -33,4 +33,4 @@ Finalmente hay que correr el programa utilizando el comando
 ```
 py manage.py runserver
 ```
-y buscar en el navegador el siguiente [enlace]([http://127.0.0.1:8000/index])
+y buscar en el navegador el siguiente [enlace](http://127.0.0.1:8000/index)
