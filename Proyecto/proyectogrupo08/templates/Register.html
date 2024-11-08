@@ -24,7 +24,7 @@
                 display: inline-block;
             }
             .salchipapa{
-                background: #49631c;
+                background: #87e98c;
                 display: inline-block;
                 margin:0 30px;
                 border:2px solid rgba(3, 0, 187, 0.1);
@@ -60,11 +60,13 @@
     </head>
     <body>
         <h1 class="p1">Formulario de Registro</h1>
+        {% if user.profile.get_role_display == "Administrador" %}
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="salchipapa">Registrarse</button>
+            <button type="submit" class="salchipapa">Crear cuenta</button>
             <a href="{% url 'index' %}" class="salchipapa">Volver al inicio</a>
         </form>
+        {% endif %}
     </body>
 </html>

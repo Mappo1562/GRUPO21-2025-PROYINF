@@ -33,7 +33,7 @@ def registro_view(request):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, 'Has cerrado sesión correctamente.')
+    messages.success(request, '')
     return redirect('index')
 
 
