@@ -6,112 +6,67 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
         <title>Men&uacute;</title>
         <meta charset="utf-8">
-        <title>Men&uacute;</title>
         <style>
-            .p1{
+            .p1 {
                 font-family: 'Roboto', sans-serif;
-            }
-            .p2{
-                font-family: 'Roboto', sans-serif;
-                font-size: 12px;
-            }
-            
-            #metodos{
-                background-image: linear-gradient(180deg, #afacfd 0, #9d9df2 50%, #8a8ee7 100%);
-                padding: 1px 10px;
-                margin: 10px;
-                border-radius: 20px;
-                box-shadow:0 0 5px 0 #f2f2f2;
-            }
-            #tecnicas{
-                background-image: linear-gradient(180deg, #afacfd 0, #9d9df2 50%, #8a8ee7 100%);
-                padding: 1px 10px;
-                margin: 5px;
-                border-radius: 20px;
-                box-shadow:0 0 5px 0 #f2f2f2;
             }
 
-            #caja {
-                margin-left:1em;
-                background-image: radial-gradient(circle at 50% -20.71%, #fbded2 0, #fad7cc 10%, #f8d0c6 20%, #f7c8c0 30%, #f5bfba 40%, #f2b5b5 50%, #efabb1 60%, #eba3af 70%, #e79bae 80%, #e294ae 90%, #dd8eb0 100%);
-                border-radius: 20px;
-                overflow: hidden;
-                display: inline-block;
-            }
-            #iz {
-                padding: 0 5px;
-                float: left;
-            }
-            #de {
-                min-width: 400px;
-                box-sizing: content-box;
-                display: inline-block;
-                padding: 0 30px;
-            }
-            #de a{
-                box-shadow:0 0 3px 0 #531a1e;
-                border:1px solid transparent;
-                position: relative;
-                float: right;
-                margin-left:30px;
-                font-size: 20px;
-                padding: 5px 10px ;
-                border-radius: 5px;
-                background-image: radial-gradient(circle at 50% -20.71%, #ffddfc 0, #fdd0f8 16.67%, #efc3f5 33.33%, #deb5f2 50%, #caa9f0 66.67%, #b49eef 83.33%, #9a96ee 100%);
-            }
-            .titulo {
-                padding: 5px;
-                font-family: 'Roboto', sans-serif;
-                margin: 0 0 0.5em;
-                text-transform: uppercase;
-                font-weight: 900;
-                font-style: italic;
-                font-size: 2rem;
-                color:#ee6352;
-                line-height: 0.8;
-                margin: 0;
-                background-image: var(--gradient);
-
-                color: transparent;
-            }
-            #content {
-                width: auto;
-                text-align:center;
-                box-sizing:content-box;
-                float: right;
-                background: white;
-                padding: 2.3em;
+            #clima {
+                position: absolute;
+                top: 115px; 
+                right: 25px; 
+                padding:10px 60px 10px 60px;
+                background-color: #a8ced6;
                 border-radius: 10px;
-                margin: 5px;
-                z-index: 2;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                font-family: 'Roboto', sans-serif;
+                max-width: 400px;
+                color: #333;
             }
-            #fiumba:hover{
-                border:1px solid white;
-                color: blue;
+
+            #clima h3 {
+                font-size: 1.2em;
+                color: #666;
+                text-align: right;
+                margin: 0;
             }
-            #del {
-                min-width: 130px;
-                height: 40px;
-                color: #fff;
-                padding: 5px 10px;
+
+            #clima .main-info {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            #clima .main-info img {
+                width: 60px;
+                height: 60px;
+            }
+
+            #clima .main-info .temp {
+                font-size: 2.5em;
                 font-weight: bold;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                position: relative;
-                display: inline-block;
-                outline: none;
-                border-radius: 5px;
-                border: none;
-                background: #ef233c;
-                box-shadow: 0 5px #d90429;
+                display: flex;
+                align-items: center;
             }
-            #del:hover {
-                box-shadow: 0 3px #d90429;
-                top: 1px;
+
+            #clima .main-info .temp sup {
+                font-size: 0.5em;
+                margin-left: 5px;
+                color: #666;
             }
-            #del:active {
-                box-shadow: 0 0 #d90429;
-                top: 5px;
+
+            #clima .details {
+                margin-top: 10px;
+                font-size: 0.9em;
+                color: #666;
+            }
+
+            #clima .details div {
+                margin-top: 5px;
+            }
+
+            #weather {
+                text-align: center;
             }
         </style>
     </head>
@@ -119,9 +74,66 @@
         
         {% include "barra.html" %}
         <div id="content">
-            <h1 class="titulo">Bienvenida/o </h1>
+            <div id="clima">
+                <h3>Ciudad: <span id="ciudad"></span></h3>
+                <div class="main-info">
+                    <img id="icono-clima" src="" alt="Icono del clima" style="display: none;">
+                    <div class="temp">
+                        <span id="temperatura"></span>
+                        <sup>°C</sup>
+                    </div>
+                </div>
+                <div class="details">
+                    <div id="descripcion"></div>
+                    <div>Humedad: <span id="humedad"></span>%</div>
+                    <div>Viento: <span id="viento"></span> km/h</div>
+                </div>
+            </div>
         </div>
         
+        <script>
+            async function obtenerClima() {
+                const apiKey = "ea5425780f9defe5b7b0174bef97cff0"; // Reemplaza con tu propia API Key
+                const ciudad = "Santiago"; // Cambia por la ciudad que desees
+                const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&APPID=${apiKey}&units=metric&lang=es`;
+
+                try {
+                    const respuesta = await fetch(url);
+                    if (!respuesta.ok) throw new Error("Error al obtener los datos");
+                    
+                    const datos = await respuesta.json();
+                    const descripcion = datos.weather[0].description;
+                    const temperatura = datos.main.temp;
+                    const icono = datos.weather[0].icon;
+                    const humedad = datos.main.humidity;
+                    const viento = datos.wind.speed;
+                    const ciudadNombre = datos.name;
+
+                    // Actualizar los elementos en HTML
+                    document.getElementById("descripcion").textContent = descripcion;  // Puedes reemplazar por `descripcion`
+                    document.getElementById("temperatura").textContent = `${temperatura}`;
+                    document.getElementById("humedad").textContent = `${humedad}`;
+                    document.getElementById("viento").textContent = `${viento}`;
+                    document.getElementById("ciudad").textContent = ciudadNombre;
+
+                    // Configurar el icono
+                    const iconoClima = document.getElementById("icono-clima");
+                    iconoClima.src = `https://openweathermap.org/img/wn/${icono}@2x.png`;
+                    iconoClima.style.display = "inline"; // Mostrar el icono
+
+                    // Actualizar la hora
+                    const fecha = new Date();
+                    const horaLocal = new Date(fecha.getTime() + (timezoneOffset * 1000));
+                    const hora = horaLocal.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                    document.getElementById("hora").textContent = `${hora}`;
+                } catch (error) {
+                    console.error("Error en la solicitud:", error);
+                    document.getElementById("weather").textContent = "No se pudo obtener el clima.";
+                }
+            }
+
+            obtenerClima();
+        </script>
     </body>
 </html>
 {% endblock %}
