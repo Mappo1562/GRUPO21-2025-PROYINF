@@ -7,6 +7,8 @@ from django.core.exceptions import ValidationError
 from django.contrib import messages
 from .models import Profile,Solicitud
 from proyectogrupo08.forms import solicitud_form
+from django.views.generic.edit import UpdateView
+from django.urls import reverse_lazy
 # Create your views here.
 
 def index(request):
@@ -83,3 +85,10 @@ def boletin_list(request):
 def boletin_detail(request, boletin_id):
     boletin = get_object_or_404(Solicitud, id=boletin_id)
     return render(request, 'boletin_detail.html', {'boletin': boletin})
+
+
+class BoletinUpdateView(UpdateView):
+    model = Solicitud
+    fields = ['title', 'content']  
+    template_name = 'boletin_edit.html' 
+    success_url = reverse_lazy('boletines_list') 
