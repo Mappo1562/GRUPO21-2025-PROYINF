@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ solicitud.title }}</title>
+    <title>{{ boletin.title }}</title>
 </head>
 <body>
-    <h1>{{ solicitud.title }}</h1>
-    <p>{{ solicitud.content }}</p>
-    <a href="{% url 'solicitud_list' %}">Volver a la lista</a>
+    <h1>{{ boletin.title }}</h1>
+    <p>{{ boletin.content }}</p>
+    <a href="{% url 'boletines_list' %}">Volver a la lista</a>
 </body>
 </html>

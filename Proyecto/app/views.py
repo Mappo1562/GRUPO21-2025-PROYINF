@@ -80,6 +80,6 @@ def boletin_list(request):
     return render(request, 'boletines_list.html', {'boletines': boletines})
 
 
-def boletin_detail(request, solicitud_id):
-    boletin = get_object_or_404(Solicitud, id=solicitud_id)
+def boletin_detail(request, boletin_id):
+    boletin = get_object_or_404(Solicitud, id=boletin_id)
     return render(request, 'boletin_detail.html', {'boletin': boletin})
