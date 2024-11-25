@@ -1,11 +1,12 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login as auth_login , logout
 from proyectogrupo08.forms import NewRegister, RegistroForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.contrib import messages
-from .models import Profile
+from .models import Profile,Solicitud
+from proyectogrupo08.forms import solicitud_form
 # Create your views here.
 
 def index(request):
@@ -59,3 +60,26 @@ def delete_user(request):
             return render(request, 'delete_user.html', {'error': 'Usuario no encontrado.'})
 
     return render(request, 'delete_user.html')
+
+
+
+def solit(request):
+    if request.method == 'POST':
+        form = solicitud_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index') 
+    else:
+        form = solicitud_form()
+    return render(request, 'solit.html', {'form': form})
+
+
+
+def boletin_list(request):
+    boletines = Solicitud.objects.all()
+    return render(request, 'boletines_list.html', {'boletines': boletines})
+
+
+def boletin_detail(request, solicitud_id):
+    boletin = get_object_or_404(Solicitud, id=solicitud_id)
+    return render(request, 'boletin_detail.html', {'boletin': boletin})

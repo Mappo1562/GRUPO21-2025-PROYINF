@@ -27,4 +27,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('delete_user/', views.delete_user, name='delete_user'),
+    path('solicitar_boletin/', views.solit, name='solit'),
+    path('boletines/', views.boletin_list, name='boletines_list'),
+    path('boletines/<int:boletin_id>/', views.boletin_detail, name='boletin_detail'),
 ]

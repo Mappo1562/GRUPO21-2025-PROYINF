@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes</title>
+</head>
+<body>
+    <h1>Boletines:</h1>
+    <ul>
+        {% for solicitud in solicitudes %}
+            <li>
+                <a href="{% url 'boletin_detail' solicitud.id %}">
+                    <button>{{ solicitud.title }}</button>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

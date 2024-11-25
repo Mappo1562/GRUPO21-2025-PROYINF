@@ -1,7 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from app.models import Profile
+from app.models import Profile, Solicitud
+
 
 class RegistroForm(UserCreationForm):
     class Meta:
@@ -36,3 +37,8 @@ class NewRegister(UserCreationForm):
             user.save()
             Profile.objects.create(user=user, role=self.cleaned_data['role'])
         return user
+    
+class solicitud_form(forms.ModelForm):
+    class Meta:
+        model = Solicitud
+        fields = ['title', 'content']

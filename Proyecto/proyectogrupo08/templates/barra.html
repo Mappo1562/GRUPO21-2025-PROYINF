@@ -77,12 +77,12 @@
                                 
                             {% elif user.profile.get_role_display == "Operador" %}
                                 <li class="nav-item">
-                                    <a class="nav-link active " aria-current="page" href="#">Solicitar boletín</a>
+                                    <a class="nav-link active " aria-current="page" href="{% url 'solit' %}">Solicitar boletín</a>
                                 </li>
 
                             {% elif user.profile.get_role_display == "Bibliotecóloga" %}
                                 <li class="nav-item">
-                                    <a class="nav-link active " aria-current="page" href="#">Revisar boletínes</a>
+                                    <a class="nav-link active " aria-current="page" href="{% url 'boletines_list' %}">Revisar boletínes</a>
                                 </li>
                             {% endif %}
                     </ul>
