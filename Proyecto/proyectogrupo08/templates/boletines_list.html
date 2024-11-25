@@ -8,10 +8,10 @@
 <body>
     <h1>Boletines:</h1>
     <ul>
-        {% for solicitud in solicitudes %}
+        {% for boletin in boletines %}
             <li>
-                <a href="{% url 'boletin_detail' solicitud.id %}">
-                    <button>{{ solicitud.title }}</button>
+                <a href="{% url 'boletin_detail' boletin.id %}">
+                    <button>{{ boletin.title }}</button>
                 </a>
             </li>
         {% endfor %}
