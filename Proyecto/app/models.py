@@ -12,9 +12,14 @@ class Profile(models.Model):
 
 
 class Solicitud(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=255)
     content = models.TextField()
+    aprobado = models.BooleanField(default=False) 
+    created_at = models.DateTimeField(auto_now_add=True)
+#coimentario pruebva
 
-    def __str__(self):
-        return self.title
-    
+class Preenvios(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+

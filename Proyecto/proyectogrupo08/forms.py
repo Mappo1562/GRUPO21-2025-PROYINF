@@ -1,4 +1,5 @@
 from django import forms
+from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from app.models import Profile, Solicitud
@@ -42,3 +43,4 @@ class solicitud_form(forms.ModelForm):
     class Meta:
         model = Solicitud
         fields = ['title', 'content']
+

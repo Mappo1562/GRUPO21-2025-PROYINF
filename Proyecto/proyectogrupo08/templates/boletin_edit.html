@@ -12,6 +12,6 @@
         {{ form.as_p }}
         <button type="submit">Guardar cambios</button>
     </form>
-    <a href="{% url 'boletines_list' %}">Cancelar</a>
+    <a href="{% url 'boletin_detail' boletin_id=object.id %}">Cancelar</a>
 </body>
 </html>

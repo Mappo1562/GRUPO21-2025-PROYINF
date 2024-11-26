@@ -5,10 +5,10 @@ from proyectogrupo08.forms import NewRegister, RegistroForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.contrib import messages
-from .models import Profile,Solicitud
+from .models import Profile,Solicitud,Preenvios
 from proyectogrupo08.forms import solicitud_form
 from django.views.generic.edit import UpdateView
-from django.urls import reverse_lazy
+from django.urls import reverse
 # Create your views here.
 
 def index(request):
@@ -87,8 +87,47 @@ def boletin_detail(request, boletin_id):
     return render(request, 'boletin_detail.html', {'boletin': boletin})
 
 
+def aprobar_boletin(request, boletin_id):
+    boletin = get_object_or_404(Solicitud, id=boletin_id)
+    Preenvios.objects.create(
+        title=boletin.title,
+        content=boletin.content
+    )
+    boletin.delete()
+    return redirect('boletines_list') 
+
+def rechazar_preenvio(request, preenvio_id):
+    preenvio = get_object_or_404(Preenvios, id=preenvio_id)
+
+    Solicitud.objects.create(
+        title=preenvio.title,
+        content=preenvio.content
+    )
+
+    preenvio.delete()
+    return redirect('Preenvios_list')
+
+
+def Preenvios_list(request):
+    preenvios = Preenvios.objects.all()
+    return render(request, 'Preenvios_list.html', {'preenvios': preenvios})
+
+def Preenvios_detail(request, preenvio_id):
+    preenvio = get_object_or_404(Preenvios, id=preenvio_id)
+    return render(request, 'Preenvios_detail.html', {'preenvio': preenvio})
+
+def subir_preenvio(request, preenvio_id):
+    preenvio = get_object_or_404(Preenvios, id=preenvio_id)
+    preenvio.delete()  # Elimina el objeto de la base de datos
+    return redirect('Preenvios_list')  # Redirige a la lista de preenvíos
+
+
+
+
 class BoletinUpdateView(UpdateView):
     model = Solicitud
     fields = ['title', 'content']  
-    template_name = 'boletin_edit.html' 
-    success_url = reverse_lazy('boletines_list') 
+    template_name = 'boletin_edit.html'
+    
+    def get_success_url(self):
+        return reverse('boletin_detail', kwargs={'boletin_id': self.object.pk})

@@ -9,6 +9,8 @@ from django.contrib import messages
 
 def index(request):
     return render(request,'index.html')
+
+
 """
 def registro_view(request):
     if request.method == 'POST':

@@ -31,5 +31,10 @@ urlpatterns = [
     path('solicitar_boletin/', views.solit, name='solit'),
     path('boletines/', views.boletin_list, name='boletines_list'),
     path('boletines/<int:boletin_id>/', views.boletin_detail, name='boletin_detail'),
+    path('boletines/<int:boletin_id>/aprobar/', views.aprobar_boletin, name='aprobar_boletin'),
     path('boletin/<int:pk>/edit/', BoletinUpdateView.as_view(), name='boletin_edit'),
+    path('preenvios/', views.Preenvios_list, name='Preenvios_list'),
+    path('preenvios/<int:preenvio_id>/', views.Preenvios_detail, name='Preenvios_detail'),
+    path('preenvios/<int:preenvio_id>/rechazar/', views.rechazar_preenvio, name='rechazar_preenvio'),
+    path('preenvios/<int:preenvio_id>/subir/', views.subir_preenvio, name='subir_preenvio'),
 ]
