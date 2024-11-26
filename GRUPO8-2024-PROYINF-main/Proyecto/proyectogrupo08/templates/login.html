@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <style>
+            *{
+                text-decoration: none;
+            }
+            .p1{
+                font-family: 'Roboto', sans-serif;
+            }
+            #barra{
+                margin:7px;
+                padding:14px;
+                list-style:none;
+                text-transform:uppercase;
+                background: #6eb365;
+                border-radius: 10px;
+                box-shadow:0 0 5px 0 #f2f2f2;
+                color: black;
+            }
+            #barra li{
+                display: inline-block;
+            }
+            .salchipapa{
+                background: #87e98c;
+                display: inline-block;
+                margin:0 30px;
+                border:2px solid rgba(3, 0, 187, 0.1);
+                padding: 10px 20px;
+                border-radius: 10px;
+                font-family: 'Roboto', sans-serif;
+            }
+            .salchipapa:hover{
+                border: solid white;
+            }
+            #contenedor{
+                float: right;
+                margin-right: 20px;
+            }
+            a:hover{
+                color: blue;
+            }
+            /* Estilos para los botones */
+            button.salchipapa {
+                background-color: #87e98c;
+                border: 2px solid rgba(3, 0, 187, 0.1);
+                padding: 10px 20px;
+                border-radius: 10px;
+                font-family: 'Roboto', sans-serif;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
+            button.salchipapa:hover {
+                border-color: white;
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="p1">Iniciar sesión</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="button-container">
+                <button type="submit" class="salchipapa">Iniciar sesión</button>
+                <a href="{% url 'index' %}" class="salchipapa">Volver al inicio</a>
+            </div>
+        </form>
+    </body>
+</html>
+

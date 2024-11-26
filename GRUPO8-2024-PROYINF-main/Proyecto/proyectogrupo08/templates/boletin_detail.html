@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ boletin.title }}</title>
+</head>
+<body>
+    <h1>{{ boletin.title }}</h1>
+    <p>{{ boletin.content }}</p>
+    <a href="{% url 'boletines_list' %}">Volver a la lista</a>
+    <a href="{% url 'boletin_edit' boletin.id %}"><button>Editar</button></a>
+    <td>
+        <a href="{% url 'aprobar_boletin' boletin.id %}" class="btn btn-success">Aprobar</a>
+    </td>
+</body>
+</html>
