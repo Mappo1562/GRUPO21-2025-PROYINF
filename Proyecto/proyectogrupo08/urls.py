@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from app.views import BoletinUpdateView
 
 from django.contrib.auth.views import LoginView,LogoutView
 from app import views
@@ -30,4 +31,5 @@ urlpatterns = [
     path('solicitar_boletin/', views.solit, name='solit'),
     path('boletines/', views.boletin_list, name='boletines_list'),
     path('boletines/<int:boletin_id>/', views.boletin_detail, name='boletin_detail'),
+    path('boletin/<int:pk>/edit/', BoletinUpdateView.as_view(), name='boletin_edit'),
 ]

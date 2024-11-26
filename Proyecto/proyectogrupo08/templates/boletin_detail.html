@@ -9,5 +9,6 @@
     <h1>{{ boletin.title }}</h1>
     <p>{{ boletin.content }}</p>
     <a href="{% url 'boletines_list' %}">Volver a la lista</a>
+    <a href="{% url 'boletin_edit' boletin.id %}"><button>Editar</button></a>
 </body>
 </html>
