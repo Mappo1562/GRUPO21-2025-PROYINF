@@ -9,6 +9,6 @@ Este es el repositorio del grupo 21, cuyos integrantes son:
 - **Ayudante**: Sebastián Salgado
 
 ## Informacion
-este proyecto trata acerca de una IA que genera boletines con informacion agraria, el proyecto se basa en tres principios, la creacion del boletin, su revision y finalmente su aprobacion, acciones las cuales estarán determinadas para un tipo de cuenta, estas son bibliotecologa, operador y daministrador.
+Este proyecto trata acerca de una IA que genera boletines con informacion agraria, el proyecto se basa en tres principios, la creacion del boletin, su revision y finalmente su aprobacion, acciones las cuales estarán determinadas para un tipo de cuenta, estas son bibliotecologa, operador y daministrador.
 Si se quiere probar el programa por favor revisar "README-analisis_y_diseño_software.md".
 este proyecto continuara siendo trabajado durante este primer semestre de 2025.
