@@ -72,9 +72,11 @@
                                     <a class="nav-link active" aria-current="page" href="{% url 'delete_user' %}">Borrar cuenta</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link active " aria-current="page" href="{% url 'Preenvios_list' %}">Subir boletin</a>                            
+                                    <a class="nav-link active " aria-current="page" href="{% url 'categorias_list' %}">Subir boletin</a>                            
                                 </li>
-                                
+                                <li class="nav-item">
+                                    <a class="nav-link active " aria-current="page" href="{% url 'crear_categoria' %}">crear categoría</a>
+                                </li>
                             {% elif user.profile.get_role_display == "Operador" %}
                                 <li class="nav-item">
                                     <a class="nav-link active " aria-current="page" href="{% url 'solit' %}">Solicitar boletín</a>

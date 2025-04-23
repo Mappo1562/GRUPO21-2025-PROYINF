@@ -1,22 +1,39 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preenvíos</title>
+  <meta charset="UTF-8">
+  <title>
+    {% if categoria %}
+      Boletines en “{{ categoria.nombre }}”
+    {% else %}
+      Todos los boletines
+    {% endif %}
+  </title>
 </head>
 <body>
-    <h1>Preenvíos:</h1>
-    <ul>
-        {% for preenvio in preenvios %}
-            <li>
-                <a href="{% url 'Preenvios_detail' preenvio.id %}">
-                    <button>{{ preenvio.title }}</button>
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'index' %}">Volver al inicio</a>
+  <h1>
+    {% if categoria %}
+      Boletines en “{{ categoria.nombre }}”
+    {% else %}
+      Todos los boletines
+    {% endif %}
+  </h1>
 
+  <ul>
+    {% for b in boletines %}
+      <li>
+        <a href="{% url 'Preenvios_detail' b.id %}">
+          {{ b.title }} 
+        </a>
+      </li>
+    {% empty %}
+      <li>No hay boletines para mostrar.</li>
+    {% endfor %}
+  </ul>
+
+  <p>
+    <a href="{% url 'categorias_list' %}">← Volver a categorías</a>
+  </p>
 </body>
 </html>

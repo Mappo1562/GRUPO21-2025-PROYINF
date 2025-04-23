@@ -1,0 +1,8 @@
+<h2>Crear nueva categoría</h2>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Guardar</button>
+  <br>
+  <a href="{{ request.META.HTTP_REFERER }}">← Volver</a>
+</form>

@@ -5,8 +5,8 @@ from proyectogrupo08.forms import NewRegister, RegistroForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.contrib import messages
-from .models import Profile,Solicitud,Preenvios
-from proyectogrupo08.forms import solicitud_form
+from .models import Profile,Solicitud,Preenvios,Categoria
+from proyectogrupo08.forms import solicitud_form, CategoriaForm
 from django.views.generic.edit import UpdateView
 from django.urls import reverse
 # Create your views here.
@@ -84,17 +84,67 @@ def boletin_list(request):
 
 def boletin_detail(request, boletin_id):
     boletin = get_object_or_404(Solicitud, id=boletin_id)
-    return render(request, 'boletin_detail.html', {'boletin': boletin})
+    categorias = Categoria.objects.all()
+    error = None
+
+    if request.method == 'POST':
+        # Viene del formulario de “aprobar” con categoría
+        categoria_id = request.POST.get('categoria_id')
+        if categoria_id:
+            categoria = get_object_or_404(Categoria, id=categoria_id)
+            Preenvios.objects.create(
+                title=boletin.title,
+                content=boletin.content,
+                categoria=categoria
+            )
+            boletin.delete()
+            return redirect('boletines_list')
+        else:
+            error = "Debes seleccionar una categoría para aprobar."
+
+    return render(request, 'boletin_detail.html', {
+        'boletin': boletin,
+        'categorias': categorias,
+        'error': error
+    })
 
 
 def aprobar_boletin(request, boletin_id):
     boletin = get_object_or_404(Solicitud, id=boletin_id)
-    Preenvios.objects.create(
-        title=boletin.title,
-        content=boletin.content
-    )
-    boletin.delete()
-    return redirect('boletines_list') 
+    categorias = Categoria.objects.all()
+
+    if request.method == 'POST':
+        categoria_id = request.POST.get('categoria_id')
+        if categoria_id:
+            categoria = get_object_or_404(Categoria, id=categoria_id)
+            # Crear el preenvío con categoría
+            Preenvios.objects.create(
+                title=boletin.title,
+                content=boletin.content,
+                categoria=categoria
+            )
+            boletin.delete()
+            return redirect('boletines_list')
+        else:
+            error = "Debes seleccionar una categoría"
+            return render(request, 'aprobar_boletin.html', {
+                'boletin': boletin,
+                'categorias': categorias,
+                'error': error
+            })
+
+    # GET: mostrar formulario
+    return render(request, 'aprobar_boletin.html', {
+        'boletin': boletin,
+        'categorias': categorias
+    })
+
+
+
+
+
+
+
 
 def rechazar_preenvio(request, preenvio_id):
     preenvio = get_object_or_404(Preenvios, id=preenvio_id)
@@ -110,18 +160,18 @@ def rechazar_preenvio(request, preenvio_id):
 
 def Preenvios_list(request):
     preenvios = Preenvios.objects.all()
-    return render(request, 'Preenvios_list.html', {'preenvios': preenvios})
+    return render(request, 'preenvios_list.html', {'preenvios': preenvios})
+
 
 def Preenvios_detail(request, preenvio_id):
     preenvio = get_object_or_404(Preenvios, id=preenvio_id)
     return render(request, 'Preenvios_detail.html', {'preenvio': preenvio})
 
+
 def subir_preenvio(request, preenvio_id):
     preenvio = get_object_or_404(Preenvios, id=preenvio_id)
-    preenvio.delete()  # Elimina el objeto de la base de datos
-    return redirect('Preenvios_list')  # Redirige a la lista de preenvíos
-
-
+    preenvio.delete()
+    return redirect('Preenvios_list')  
 
 
 class BoletinUpdateView(UpdateView):
@@ -131,3 +181,44 @@ class BoletinUpdateView(UpdateView):
     
     def get_success_url(self):
         return reverse('boletin_detail', kwargs={'boletin_id': self.object.pk})
+    
+
+
+
+
+
+
+
+
+
+
+
+
+def crear_categoria(request):
+
+    if request.method == 'POST':
+        form = CategoriaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = CategoriaForm()
+
+    return render(request, 'crear_categoria.html', {'form': form})
+
+
+
+def categorias_list(request):
+    categorias = Categoria.objects.all()
+    return render(request, 'categorias_list.html', {
+        'categorias': categorias
+    })
+
+
+def preenvios_por_categoria(request, categoria_id):
+    categoria = get_object_or_404(Categoria, id=categoria_id)
+    boletines = Preenvios.objects.filter(categoria=categoria)
+    return render(request, 'preenvios_list.html', {
+        'boletines': boletines,
+        'categoria': categoria
+    })

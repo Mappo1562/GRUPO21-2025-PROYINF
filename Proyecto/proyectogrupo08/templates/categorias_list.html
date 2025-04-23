@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Categorías de boletines</title>
+</head>
+<body>
+  <h1>Elige una categoría</h1>
+  <ul>
+    {% for cat in categorias %}
+      <li>
+        <a href="{% url 'preenvios_por_categoria' cat.id %}">
+          {{ cat.nombre }}
+        </a>
+      </li>
+    {% empty %}
+      <li>No hay categorías creadas aún.</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'index' %}">Volver al menu</a>
+</body>
+</html>

@@ -2,7 +2,7 @@ from django import forms
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from app.models import Profile, Solicitud
+from app.models import Profile, Solicitud, Categoria
 
 
 class RegistroForm(UserCreationForm):
@@ -39,8 +39,14 @@ class NewRegister(UserCreationForm):
             Profile.objects.create(user=user, role=self.cleaned_data['role'])
         return user
     
+
 class solicitud_form(forms.ModelForm):
     class Meta:
         model = Solicitud
         fields = ['title', 'content']
 
+
+class CategoriaForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = ['nombre']

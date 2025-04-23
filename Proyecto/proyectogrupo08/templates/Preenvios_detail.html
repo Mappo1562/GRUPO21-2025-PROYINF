@@ -10,7 +10,7 @@
     <p>{{ preenvio.content }}</p>
     <form action="{% url 'rechazar_preenvio' preenvio.id %}" method="post">
         {% csrf_token %}
-        <button type="submit">Rechazar y devolver a boletines</button>
+        <button type="submit">Rechazar</button>
     </form>
 
     <form action="{% url 'subir_preenvio' preenvio.id %}" method="post">
@@ -18,6 +18,6 @@
         <button type="submit">Subir</button>
     </form>
 
-    <a href="{% url 'Preenvios_list' %}">Volver a la lista</a>
+    <a href="{{ request.META.HTTP_REFERER }}">← Volver</a>
 </body>
 </html>
