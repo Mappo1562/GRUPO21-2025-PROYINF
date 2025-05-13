@@ -5,7 +5,7 @@ from proyectogrupo08.forms import NewRegister, RegistroForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.contrib import messages
-from .models import Profile,Solicitud,Preenvios,Categoria
+from .models import Profile,Solicitud,Preenvios,Categoria,Historial
 from proyectogrupo08.forms import solicitud_form, CategoriaForm
 from django.views.generic.edit import UpdateView
 from django.urls import reverse
@@ -155,7 +155,7 @@ def rechazar_preenvio(request, preenvio_id):
     )
 
     preenvio.delete()
-    return redirect('Preenvios_list')
+    return redirect('categorias_list')
 
 
 def Preenvios_list(request):
@@ -170,8 +170,13 @@ def Preenvios_detail(request, preenvio_id):
 
 def subir_preenvio(request, preenvio_id):
     preenvio = get_object_or_404(Preenvios, id=preenvio_id)
+    Historial.objects.create(
+        title=preenvio.title,
+        content=preenvio.content,
+        categoria=preenvio.categoria
+    )
     preenvio.delete()
-    return redirect('Preenvios_list')  
+    return redirect('categorias_list')  
 
 
 class BoletinUpdateView(UpdateView):
@@ -222,3 +227,13 @@ def preenvios_por_categoria(request, categoria_id):
         'boletines': boletines,
         'categoria': categoria
     })
+
+
+
+def historial_list(request):
+    boletines = Historial.objects.all().order_by('-created_at')
+    return render(request, 'historial_list.html', {'boletines': boletines})
+
+def historial_detail(request, historial_id):
+    boletin = get_object_or_404(Historial, id=historial_id)
+    return render(request, 'historial_detail.html', {'boletin': boletin})

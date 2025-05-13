@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de boletines</title>
+</head>
+<body>
+    <h1>Historial de boletines</h1>
+
+    <a href="{% url 'index' %}">Volver al inicio</a>
+    
+    {% if boletines %}
+        <ul>
+            <p>Titulo - categoría</p>
+            {% for boletin in boletines %}
+                <li>
+                    <a href="{% url 'historial_detail' boletin.id %}">
+                        <strong>{{ boletin.title }}</strong> - 
+                        {{ boletin.categoria.nombre  }} - 
+                        {{ boletin.created_at|date:"d M Y H:i" }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay boletines en el historial.</p>
+    {% endif %}
+
+    
+</body>
+</html>

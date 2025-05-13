@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ boletin.title }}</title>
+</head>
+<body>
+    <h1>{{ boletin.title }}</h1>
+    <p><strong>Categoría:</strong> {{ boletin.categoria.nombre  }}</p>
+    <p><strong>Fecha:</strong> {{ boletin.created_at|date:"d M Y H:i" }}</p>
+    <br>
+    <p>{{ boletin.content|linebreaks }}</p>
+
+    <a href="{% url 'historial_list' %}">Volver al historial</a>
+</body>
+</html>

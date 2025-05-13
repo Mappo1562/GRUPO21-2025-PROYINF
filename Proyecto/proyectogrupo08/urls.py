@@ -41,4 +41,7 @@ urlpatterns = [
     path('preenvios/<int:preenvio_id>/rechazar/', views.rechazar_preenvio, name='rechazar_preenvio'),
     path('preenvios/<int:preenvio_id>/subir/', views.subir_preenvio, name='subir_preenvio'),
     path('preenvios/categoria/<int:categoria_id>/', views.preenvios_por_categoria, name='preenvios_por_categoria'),
+    
+    path('historial/', views.historial_list, name='historial_list'),
+    path('historial/<int:historial_id>/', views.historial_detail, name='historial_detail'),
 ]
