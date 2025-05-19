@@ -20,7 +20,7 @@ class CrearCategoriaEndpointTesting(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         User.objects.filter(username='admin').delete()
-        Categoria.objects.filter(nombre="Categoría Test").delete()  # limpia si quedó
+        Categoria.objects.filter(nombre="Categoría Test").delete() 
         super().tearDownClass()
 
     def test_creacion_exitosa_categoria(self):
@@ -37,15 +37,13 @@ class CrearCategoriaEndpointTesting(unittest.TestCase):
             Usuario autenticado como administrador, formulario válido
         """
 
-        url = reverse("crear_categoria")  # Asegúrate que este es el name del path
+        url = reverse("crear_categoria")  
         data = {"nombre": "Categoría Test"}
 
         response = self.client.post(url, data)
 
-        # Comprobamos que redirige a 'index'
         self.assertEqual(response.status_code, 302)
 
-        # Verificamos que la categoría fue creada en la base de datos
         self.assertTrue(Categoria.objects.filter(nombre="Categoría Test").exists())
 
     def test_creacion_fallida_categoria_por_formulario_invalido(self):
