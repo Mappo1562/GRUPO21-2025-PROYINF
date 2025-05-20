@@ -1,7 +1,7 @@
 
 """
 
-Para el testing de este endpoint se tomó la IS H1 realizada durante ingeniería de software.
+Para el testing de este endpoint se tomó la "IS H1" realizada durante ingeniería de software.
 
 """
 

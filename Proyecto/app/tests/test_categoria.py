@@ -1,5 +1,5 @@
 """
-Para el testing de este endpoint se tomó la HU 3 correspondiente al registro de una nueva categoría.
+Para el testing de este endpoint se tomó la "IS H3" correspondiente al registro de una nueva categoría.
 """
 
 import unittest
