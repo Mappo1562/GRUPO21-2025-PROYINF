@@ -9,10 +9,7 @@ from .models import Profile,Solicitud,Preenvios,Categoria,Historial
 from proyectogrupo08.forms import solicitud_form, CategoriaForm
 from django.views.generic.edit import UpdateView
 from django.urls import reverse
-from django.views.decorators.http import require_GET, require_POST
-from django.contrib.auth.decorators import login_required
 # Create your views here.
-
 
 def index(request):
     if not request.user.is_authenticated:
@@ -36,13 +33,13 @@ def registro_view(request):
     
     return render(request, 'Register.html', {'form': form})
 
-@require_GET
+
 def logout_view(request):
     logout(request)
     messages.success(request, '')
     return redirect('index')
 
-@require_POST
+
 def login(request):
     if request.method == "POST":
         form = NewRegister(request.POST)
@@ -50,7 +47,6 @@ def login(request):
             form.save()
             return redirect('login')
     return render(request,'registration/register.html',{'form':NewRegister})
-
 
 
 def delete_user(request):
@@ -66,6 +62,7 @@ def delete_user(request):
     return render(request, 'delete_user.html')
 
 
+
 def solit(request):
     if request.method == 'POST':
         form = solicitud_form(request.POST)
@@ -75,6 +72,7 @@ def solit(request):
     else:
         form = solicitud_form()
     return render(request, 'solit.html', {'form': form})
+
 
 
 def boletin_list(request):
@@ -133,13 +131,19 @@ def aprobar_boletin(request, boletin_id):
                 'error': error
             })
 
-
+    # GET: mostrar formulario
     return render(request, 'aprobar_boletin.html', {
         'boletin': boletin,
         'categorias': categorias
     })
 
-@require_POST
+
+
+
+
+
+
+
 def rechazar_preenvio(request, preenvio_id):
     preenvio = get_object_or_404(Preenvios, id=preenvio_id)
 
@@ -152,18 +156,16 @@ def rechazar_preenvio(request, preenvio_id):
     return redirect('categorias_list')
 
 
-@require_GET
 def preenvios_list(request):
     preenvios = Preenvios.objects.all()
     return render(request, 'preenvios_list.html', {'preenvios': preenvios})
 
 
-@require_GET
 def preenvios_detail(request, preenvio_id):
     preenvio = get_object_or_404(Preenvios, id=preenvio_id)
     return render(request, 'Preenvios_detail.html', {'preenvio': preenvio})
 
-@require_POST
+
 def subir_preenvio(request, preenvio_id):
     preenvio = get_object_or_404(Preenvios, id=preenvio_id)
     Historial.objects.create(
@@ -182,6 +184,16 @@ class BoletinUpdateView(UpdateView):
     
     def get_success_url(self):
         return reverse('boletin_detail', kwargs={'boletin_id': self.object.pk})
+    
+
+
+
+
+
+
+
+
+
 
 
 
@@ -198,14 +210,14 @@ def crear_categoria(request):
     return render(request, 'crear_categoria.html', {'form': form})
 
 
-@require_GET
+
 def categorias_list(request):
     categorias = Categoria.objects.all()
     return render(request, 'categorias_list.html', {
         'categorias': categorias
     })
 
-@require_GET
+
 def preenvios_por_categoria(request, categoria_id):
     categoria = get_object_or_404(Categoria, id=categoria_id)
     boletines = Preenvios.objects.filter(categoria=categoria)
@@ -215,12 +227,11 @@ def preenvios_por_categoria(request, categoria_id):
     })
 
 
-@require_GET
+
 def historial_list(request):
     boletines = Historial.objects.all().order_by('-created_at')
     return render(request, 'historial_list.html', {'boletines': boletines})
 
-@require_GET
 def historial_detail(request, historial_id):
     boletin = get_object_or_404(Historial, id=historial_id)
     return render(request, 'historial_detail.html', {'boletin': boletin})
