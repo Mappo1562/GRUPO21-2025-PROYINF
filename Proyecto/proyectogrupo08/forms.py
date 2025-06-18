@@ -9,21 +9,7 @@ class RegistroForm(UserCreationForm):
     class Meta:
         model = User 
         fields = ['username', 'password1', 'password2']  
-"""
-class NewRegister(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
-        model = User
-        fields = ['username','password1','password2']
-    
-    
-    def __init__(self,*args,**kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['username'].label = 'Nombre'
-        self.fields['password1'].label = 'Contraseña'
-        self.fields['password2'].label = 'Confirmar contraseña'
-        for fieldname in ['username', 'password1', 'password2']:
-            self.fields[fieldname].help_text = None
-"""
+
 
 class NewRegister(UserCreationForm):
     role = forms.ChoiceField(choices=Profile.ROLE_CHOICES, label="Rol")

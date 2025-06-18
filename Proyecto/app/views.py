@@ -46,8 +46,6 @@ def login(request):
         if form.is_valid():
             form.save()
             return redirect('login')
-        else:
-            form = NewRegister()
     return render(request,'registration/register.html',{'form':NewRegister})
 
 
@@ -158,12 +156,12 @@ def rechazar_preenvio(request, preenvio_id):
     return redirect('categorias_list')
 
 
-def Preenvios_list(request):
+def preenvios_list(request):
     preenvios = Preenvios.objects.all()
     return render(request, 'preenvios_list.html', {'preenvios': preenvios})
 
 
-def Preenvios_detail(request, preenvio_id):
+def preenvios_detail(request, preenvio_id):
     preenvio = get_object_or_404(Preenvios, id=preenvio_id)
     return render(request, 'Preenvios_detail.html', {'preenvio': preenvio})
 

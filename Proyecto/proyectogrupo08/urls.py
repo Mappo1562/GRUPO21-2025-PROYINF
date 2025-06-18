@@ -36,8 +36,8 @@ urlpatterns = [
 
     path('categorias/nueva/', views.crear_categoria, name='crear_categoria'),
     path('categorias/', views.categorias_list, name='categorias_list'),
-    path('preenvios/', views.Preenvios_list, name='Preenvios_list'),
-    path('preenvios/<int:preenvio_id>/', views.Preenvios_detail, name='Preenvios_detail'),
+    path('preenvios/', views.preenvios_list, name='preenvios_list'),
+    path('preenvios/<int:preenvio_id>/', views.preenvios_detail, name='preenvios_detail'),
     path('preenvios/<int:preenvio_id>/rechazar/', views.rechazar_preenvio, name='rechazar_preenvio'),
     path('preenvios/<int:preenvio_id>/subir/', views.subir_preenvio, name='subir_preenvio'),
     path('preenvios/categoria/<int:categoria_id>/', views.preenvios_por_categoria, name='preenvios_por_categoria'),
