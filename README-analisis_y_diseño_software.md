@@ -24,6 +24,7 @@ El programa esta siendo probado y ejecutado en el simbolo del sistema correspond
 Para correr el programa es necesario tener instalado la libreria django con los comandos
 ```
 pip install django
+pip install python-decouple
 ```
 Luego es necesario posicionarse en la carpeta donde se encuentra el programa con el comando
 ```
